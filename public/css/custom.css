@@ -192,6 +192,8 @@ a.mobile-menu-toogle{
         position: relative;
         top: auto;
         right: auto;
+        opacity: 1;
+        pointer-events: all;
     }
 
     a.mobile-menu-toogle{
