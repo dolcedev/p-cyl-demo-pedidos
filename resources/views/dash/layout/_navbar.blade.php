@@ -16,14 +16,23 @@
                 </div>
             </div>
         </li>
-        <li class="navbar-item">
-            <a href="#">Home</a>
+        <li class="navbar-item" style="max-width:120px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">
+            {{--  --}}
+            {{auth()->user()->name}}
         </li>
         <li class="navbar-item-account">
             <img src="{{asset('imgs/nophoto.jpg')}}" alt="Foto usuario">
             <div class="account-menu">
                 <a href="{{route('dash.pedidos')}}">Pedidos</a>
-                <a href="">Log out</a>
+                <a href="" class="logout-button-js">Log out</a>
+
+                <form class="logout-form-js" action="{{route('logout')}}" method="POST" style="display: none;"> @csrf </form>
+                <script>
+                    document.querySelector('.logout-button-js').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.querySelector('.logout-form-js').submit();
+                    });
+                </script>
             </div>
         </li>
     </ul>

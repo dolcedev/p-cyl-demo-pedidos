@@ -83,28 +83,42 @@
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <span>Generar Listas</span>
-                </a>
-            </li>
+            @if (auth()->user()->isRole("admin"))
+
+                <li class="menu-title">
+                    SOLO ADMINISTRADOR
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span>Generar Listas</span>
+                    </a>
+                </li>
 
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <span>Etiquetas</span>
-                </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span>Etiquetas</span>
+                    </a>
+                </li>
 
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <span>Pegatinas</span>
-                </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span>Pegatinas</span>
+                    </a>
+                </li>
+            @else
+
+                <li class="menu-title">
+                    {OCULTO PARA NO ADMIN}
+                </li>
+
+            @endif
+
 
 
         </ul>

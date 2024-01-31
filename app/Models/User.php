@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -42,4 +43,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public const ROLES = [
+        'user' => 1,
+
+        'admin' => 33,
+    ];
+
+    // use $this->middleware('role:admin'); or $this->middleware('role:admin,designer');
+    // or in blade auth()->user()?->isRole('admin')
+    public function isRole($roles){
+
+        if( $this->role_id == User::ROLES['admin'] ) return true;
+
+        $roles_arr = explode(",", $roles);
+        $myRole = array_search ( $this->role_id , User::ROLES );
+
+        if( in_array( $myRole , $roles_arr ) ){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function myRole(){
+        return array_search ( $this->role_id , User::ROLES );
+    }
+
 }

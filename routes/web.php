@@ -12,20 +12,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware('auth')->group(function () {
+    Route::get('/dash/pedidos', function () {
+
+        // reads /resources/data/PEDIDOS_EJEMPLO.csv and returns an array
+        $pedidos = array_map('str_getcsv', file('../resources/data/PEDIDOS_EJEMPLO.csv'));
+        // removes the first row of the array
+        array_shift($pedidos);
+        // split each row with ;
+        foreach ($pedidos as $key => $value) {
+            $pedidos[$key] = explode(';', $value[0]);
+        }
+
+
+        return view('dash.pedidos')->withPedidos($pedidos);
+
+
+    })->name('dash.pedidos');
+});
 
 Route::get('/', function () {
-
-    // reads /resources/data/PEDIDOS_EJEMPLO.csv and returns an array
-    $pedidos = array_map('str_getcsv', file('../resources/data/PEDIDOS_EJEMPLO.csv'));
-    // removes the first row of the array
-    array_shift($pedidos);
-    // split each row with ;
-    foreach ($pedidos as $key => $value) {
-        $pedidos[$key] = explode(';', $value[0]);
-    }
-
-
-    return view('dash.pedidos')->withPedidos($pedidos);
-
-
-})->name('dash.pedidos');
+    return redirect('/login');
+});
