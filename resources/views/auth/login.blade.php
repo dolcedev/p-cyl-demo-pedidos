@@ -110,8 +110,8 @@
         }
 
         body {
-            background: rgb(5, 17, 242);
-            background: linear-gradient(90deg, rgb(9, 19, 218) 0%, rgb(3, 12, 199) 100%);
+            background: rgb(241, 245, 249);
+            background: linear-gradient(90deg, rgb(241, 245, 249) 0%, rgb(172, 201, 231) 100%);
             font-family: "Roboto", sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
